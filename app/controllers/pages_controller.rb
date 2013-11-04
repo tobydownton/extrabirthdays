@@ -16,6 +16,8 @@ class PagesController < ApplicationController
     @previous_bday = @age_calculator.previous_bday
     @days_since_last_bday = @age_calculator.days_since_last_bday
     @next_weeks_bday = @age_calculator.next_weeks_bday
+    @next_days_bday = @age_calculator.next_days_bday
+    @next_months_bday = @age_calculator.next_months_bday
   end
 
 end

@@ -1,6 +1,12 @@
 <h1>Your date of birth is:</h1>
 <%= @raw_dob %><br>
 
+<h1>Your last birthday was:</h1>
+<%= @previous_bday %>
+
+<h1>Your are:</h1>
+<%= @years_old %> years and <%= @days_since_last_bday %> days old
+
 <h1>You are this many days old:</h1>
 <%= @days_old %>
 
@@ -10,11 +16,11 @@
 <h1>You are this many months old:</h1>
 <%= @months_old %>
 
-<h1>Your last birthday was:</h1>
-<%= @previous_bday %>
+<h1>Your next extra birthday in days is:</h1>
+<%= @next_days_bday %>
 
-<h1>Your are:</h1>
-<%= @years_old %> years and <%= @days_since_last_bday %> days old
-
-<h1>You next extra birthday in weeks is:</h1>
+<h1>Your next extra birthday in weeks is:</h1>
 <%= @next_weeks_bday %>
+
+<h1>Your next extra birthday in months is:</h1>
+<%= @next_months_bday %>
