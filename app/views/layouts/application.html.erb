@@ -23,8 +23,7 @@
   <body>
 
     <%= yield %>
-
-    
     <%= javascript_include_tag "application" %>
+    <%= render :partial => 'layouts/footer' %>
   </body>
 </html>
