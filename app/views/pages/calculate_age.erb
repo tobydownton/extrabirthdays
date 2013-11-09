@@ -1,26 +1,106 @@
-<h1>Your date of birth is:</h1>
-<%= @raw_dob %><br>
+<div class="row">
+  <br>
+  <div class="large-6 columns">
+  	<div class="panel">
+  	<h2>Try Another!</h2>
+ 		</div>
+ 	</div>
 
-<h1>Your last birthday was:</h1>
-<%= @previous_bday %>
+	<div class="large-6 columns">
+  	<br>
+  	<%= form_for :post, url: 'calculate_age' do |f| %>
+		  <p>
+		    <%= f.text_field :date_of_birth %>
+		  </p>
+		  <p>
+		    <%= f.submit "Get Extra Birthdays!" %>
+		  </p>
+		<% end %>
+  </div>
+</div>
 
-<h1>Your are:</h1>
-<%= @years_old %> years and <%= @days_since_last_bday %> days old
+<hr>
+<%# Top row shows dob and years/days old %>
+<br>
+<div class="row">
+  <div class="large-6 columns">
+  	<div class="panel">
+	  	<h2>Your date of birth is:</h2>
+		  	<div class="panel callout">
+				<%= @raw_dob %><br>
+				</div>
+			</div>
+  </div>
 
-<h1>You are this many days old:</h1>
-<%= @days_old %>
+  <div class="large-6 columns">
+  	<div class="panel">
+	  	<h2>You are:</h2>
+	  		<div class="panel callout">
+	  		<%= @years_old %> years, and <%= @days_since_last_bday %> days old
+	  		</div>
+	  </div>
+  </div>
+</div>
 
-<h1>You are this many weeks old:</h1>
-<%= @weeks_old %>
+<%# Second row shows days old and next extra days bday %>
+<div class="row">
+ <div class="large-6 columns">
+  	<div class="panel">
+	  	<h2>Total Age in Days:</h2><br><br>
+		  	<div class="panel callout">
+		  		<%= number_with_delimiter(@days_old, :delimiter => ',') %>
+				</div>
+		</div>
+  </div>	
 
-<h1>You are this many months old:</h1>
-<%= @months_old %>
+  <div class="large-6 columns">
+  	<div class="panel">
+	  	<h2>Your next extra birthday in days is:</h2>
+	  		<div class="panel callout">
+	  		<%= number_with_delimiter(@next_days_bday, :delimiter => ',') %>
+	  		</div>
+	  </div>
+  </div>
+</div>
 
-<h1>Your next extra birthday in days is:</h1>
-<%= @next_days_bday %>
+<%# Third row shows weeks old and next extra weeks bday %>
+<div class="row">
+  <div class="large-6 columns">
+  	<div class="panel">
+	  	<h2>Total Age in Weeks:</h2><br><br>
+	  		<div class="panel callout">
+	  		<%= number_with_delimiter(@weeks_old, :delimiter => ',') %> weeks old
+	  		</div>
+	  </div>
+  </div>
+  	
+  <div class="large-6 columns">
+  	<div class="panel">
+	  	<h2>Your next extra birthday in weeks is:</h2>
+		  	<div class="panel callout">
+		  		<%= number_with_delimiter(@next_weeks_bday, :delimiter => ',') %>
+				</div>
+		</div>
+  </div>
+</div>
 
-<h1>Your next extra birthday in weeks is:</h1>
-<%= @next_weeks_bday %>
-
-<h1>Your next extra birthday in months is:</h1>
-<%= @next_months_bday %>
+<%# Forth row shows months old and next extra months bday %>
+<div class="row">
+  <div class="large-6 columns">
+  	<div class="panel">
+	  	<h2>Total Age in Months:</h2><br><br>
+	  		<div class="panel callout">
+	  		<%= number_with_delimiter(@months_old, :delimiter => ',') %>
+	  		</div>
+	  </div>
+  </div>
+  	
+  <div class="large-6 columns">
+  	<div class="panel">
+	  	<h2>Your next extra birthday in months is:</h2>
+	  		<div class="panel callout">
+	  		<%= number_with_delimiter(@next_months_bday, :delimiter => ',') %>
+	  		</div>
+	  </div>
+  </div>
+</div>

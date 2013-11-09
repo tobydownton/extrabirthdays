@@ -1,12 +1,26 @@
-<h1>Please enter your date of birth:</h1>
+<div class="row">
+  <br>
+  <div class="large-6 columns">
+  	<div class="panel">
+  	<h2>Enter your date of birth:</h2>
+ 		</div>
+ 	</div>
 
-<%= form_for :post, url: 'calculate_age' do |f| %>
-  <p>
-    <%= f.text_field :date_of_birth %>
-  </p>
- 
- 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+
+	<div class="large-6 columns">
+  	<br>
+  	<%= form_for :post, url: 'calculate_age' do |f| %>
+		  <p>
+		    <%= f.text_field :date_of_birth %>
+		  </p>
+		  <p>
+		    <%= f.submit "Get Extra Birthdays!" %>
+		  </p>
+		<% end %>
+  </div>
+</div>
+
+
+
+
+
