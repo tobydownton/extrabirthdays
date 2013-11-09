@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     @user.date_of_birth = @raw_dob
 		
     if @user.valid? == false
-      flash[:notice] = "This is not a valid date of birth, try again"
+      flash[:notice] = "This is not a valid date of birth, try again!"
       redirect_to :back
     end
 
