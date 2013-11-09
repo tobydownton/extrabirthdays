@@ -1,12 +1,27 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#container {
+   min-height:100%;
+   position:relative;
+}
+
 footer {
-  margin-top: 400px;
+  position:absolute;
+  bottom:10px;
+  width:100%;
   background-color: #000;
   color: #eee;
   text-align: center;
   p {
     line-height: 100px;
   }
+}
+
+html, body {
+	background-image: url(/assets/Balloons.jpg);
+	margin:0;
+  padding:0;
+  height:100%;
 }

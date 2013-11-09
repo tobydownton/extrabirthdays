@@ -6,12 +6,11 @@
  		</div>
  	</div>
 
-
 	<div class="large-6 columns">
   	<br>
   	<%= form_for :post, url: 'calculate_age' do |f| %>
 		  <p>
-		    <%= f.text_field :date_of_birth %>
+		    <%= f.text_field :date_of_birth, class: 'datepicker' %>
 		  </p>
 		  <p>
 		    <%= f.submit "Get Extra Birthdays!" %>
@@ -19,8 +18,4 @@
 		<% end %>
   </div>
 </div>
-
-
-
-
-
+<%= flash[:notice] %>

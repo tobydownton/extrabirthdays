@@ -2,7 +2,7 @@
   <br>
   <div class="large-6 columns">
   	<div class="panel">
-  	<h2>Try Another!</h2>
+  	<h2>Try Another Date:</h2>
  		</div>
  	</div>
 
@@ -10,7 +10,7 @@
   	<br>
   	<%= form_for :post, url: 'calculate_age' do |f| %>
 		  <p>
-		    <%= f.text_field :date_of_birth %>
+		    <%= f.text_field :date_of_birth, class: 'datepicker' %>
 		  </p>
 		  <p>
 		    <%= f.submit "Get Extra Birthdays!" %>
@@ -104,3 +104,4 @@
 	  </div>
   </div>
 </div>
+<br><br><br><br><br><br><br><br>

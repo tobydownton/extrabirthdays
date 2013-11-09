@@ -14,5 +14,13 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
-
+//= require jquery.ui.all
 $(document).foundation();
+$(function() {
+  $('.datepicker').datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1900:2013",
+      dateFormat: "dd/mm/yy"
+    });
+});

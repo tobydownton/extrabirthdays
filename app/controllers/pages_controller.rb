@@ -3,10 +3,14 @@ class PagesController < ApplicationController
   end
 
   def calculate_age
-  	# Extract date of birth
-  	# Assign it to an instance variable
-
-		@raw_dob = params["post"]["date_of_birth"]
+    @raw_dob = params["post"]["date_of_birth"]
+    @user = User.new
+    @user.date_of_birth = @raw_dob
+		
+    if @user.valid? == false
+      flash[:notice] = "This is not a valid date of birth, try again"
+      redirect_to :back
+    end
 
     @age_calculator = AgeCalculator.new(@raw_dob)
     @days_old = @age_calculator.days_old

@@ -20,10 +20,17 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
-
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
-    <%= render :partial => 'layouts/footer' %>
-  </body>
+  <div id="container">
+   <div id="header"></div>
+   <div id="body">
+	  <body>
+	    <%= yield %>
+	    <%= javascript_include_tag "application" %>
+	    <%= render :partial => 'layouts/footer' %>
+	  </body>
+	 </div>
+	 
+		<div id="footer"></div>
+		  
+	  </div>
 </html>
