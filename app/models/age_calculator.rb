@@ -8,6 +8,11 @@ class AgeCalculator
 		@dob = raw_dob.to_time
 	end
 
+#Trying to get dob in format I want with nice_dob
+	def nice_dob
+		@nice_dob = @dob.strftime("%d %b %Y")
+	end
+
 	def days_old
 		@days_old = ((Time.now - @dob) / 1.day).round
 	end

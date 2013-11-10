@@ -13,6 +13,7 @@ class PagesController < ApplicationController
     end
 
     @age_calculator = AgeCalculator.new(@raw_dob)
+    @nice_dob = @age_calculator.nice_dob
     @days_old = @age_calculator.days_old
     @weeks_old = @age_calculator.weeks_old
     @months_old = @age_calculator.months_old
