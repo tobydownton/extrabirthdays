@@ -7,10 +7,9 @@ class AgeCalculator
 	def initialize(raw_dob)
 		@dob = raw_dob.to_time
 	end
-
 #Trying to get dob in format I want with nice_dob
 	def nice_dob
-		@nice_dob = @dob.strftime("%d %b %Y")
+		@nice_dob = @dob.strftime("%A the #{@dob.day.ordinalize} %B %Y")
 	end
 
 	def days_old
