@@ -4,12 +4,14 @@ gem 'rails', '3.2.12'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'date_validator'
+gem 'google-api-client'
+gem 'httparty'
 
-group :production do
+group :production, :development do
 	gem 'pg'
 end
 
-group :development, :test do
+group :test do
 	gem 'sqlite3'
 end
 

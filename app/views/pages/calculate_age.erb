@@ -21,6 +21,21 @@
   <% end %>
 </div>
 
+<div class="row">
+  <div class="large-6 columns">
+  </div>
+  <div class="large-6 columns">
+  	<% if !flash.empty? %>
+  		<div data-alert class="alert-box">
+  			<%= flash[:notice] %>
+		  <a href="#" class="close">&times;</a>
+			</div>
+  	<% end %>
+  </div>
+</div>
+
+<% if flash[:notice] == nil %>
+
 <hr>
 <%# Top row shows dob and years/days old %>
 <br>
@@ -38,7 +53,9 @@
   	<div class="panel">
 	  	<h2>You are:</h2>
 	  		<div class="panel callout">
+	  		
 	  		<%= @years_old %> years, and <%= @days_since_last_bday %> days old
+	  	
 	  		</div>
 	  </div>
   </div>
@@ -60,6 +77,7 @@
 	  	<h2>Your next extra birthday in days is:</h2>
 	  		<div class="panel callout">
 	  		<%= number_with_delimiter(@next_days_bday, :delimiter => ',') %>
+	  		which falls on the <%= @next_dob_in_days  %>
 	  		</div>
 	  </div>
   </div>
@@ -81,6 +99,7 @@
 	  	<h2>Your next extra birthday in weeks is:</h2>
 		  	<div class="panel callout">
 		  		<%= number_with_delimiter(@next_weeks_bday, :delimiter => ',') %>
+		  		which falls on the <%= @next_dob_in_weeks  %>
 				</div>
 		</div>
   </div>
@@ -102,8 +121,21 @@
 	  	<h2>Your next extra birthday in months is:</h2>
 	  		<div class="panel callout">
 	  		<%= number_with_delimiter(@next_months_bday, :delimiter => ',') %>
+	  		which falls on the <%= @next_dob_in_months  %>
 	  		</div>
 	  </div>
   </div>
 </div>
+
+<ul>
+  <% @celeb_info.each do |item| %>
+    <% item.each do |key,value| %>
+        <li><%= "#{key.to_s} #{value.to_s}" %> </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%# Ends flash notice from line 37 %>
+<% end %>
+
 <br><br><br><br><br><br><br><br>

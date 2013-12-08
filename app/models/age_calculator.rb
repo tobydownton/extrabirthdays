@@ -7,13 +7,18 @@ class AgeCalculator
 	def initialize(raw_dob)
 		@dob = raw_dob.to_time
 	end
+
+	def dob
+		@dob
+	end
+
 #Trying to get dob in format I want with nice_dob
 	def nice_dob
 		@nice_dob = @dob.strftime("%A the #{@dob.day.ordinalize} %B %Y")
 	end
 
 	def days_old
-		@days_old = ((Time.now - @dob) / 1.day).round
+		@days_old = (((Time.now - @dob) / 1.day).round) - 1
 	end
 
 	def weeks_old
@@ -39,25 +44,37 @@ class AgeCalculator
 	end
 
 	def days_since_last_bday
-		@days_since_last_bday = ((Time.now - @previous_bday.to_time) / 1.day).round
+		@days_since_last_bday = (((Time.now - @previous_bday.to_time) / 1.day).round) - 1
 	end
 
 	def next_weeks_bday
 		weeks_bday = 0
-		WEEKS_MILESTONES.each {|x| if @weeks_old < x; weeks_bday = x; break; end }
+		WEEKS_MILESTONES.each {|x| if weeks_old < x; weeks_bday = x; break; end }
 		return weeks_bday
 	end
 
 	def next_days_bday
 		days_bday = 0
-		DAYS_MILESTONES.each {|x| if @days_old < x; days_bday = x; break; end }
+		DAYS_MILESTONES.each {|x| if days_old < x; days_bday = x; break; end }
 		return days_bday
 	end
 
 		def next_months_bday
 		months_bday = 0
-		MONTHS_MILESTONES.each {|x| if @months_old < x; months_bday = x; break; end }
+		MONTHS_MILESTONES.each {|x| if months_old < x; months_bday = x; break; end }
 		return months_bday
+	end
+
+	def next_dob_in_days
+		(@dob + next_days_bday.days).strftime("%A the #{@dob.day.ordinalize} %B %Y")
+	end
+
+	def next_dob_in_weeks
+		(@dob + next_weeks_bday.weeks).strftime("%A the #{@dob.day.ordinalize} %B %Y")
+	end
+
+	def next_dob_in_months
+		(@dob + next_months_bday.months).strftime("%A the #{@dob.day.ordinalize} %B %Y")
 	end
 	
 end
