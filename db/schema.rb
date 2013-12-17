@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131109171316) do
+ActiveRecord::Schema.define(:version => 20131215172823) do
+
+  create_table "celebrity_data", :force => true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.string   "profession"
+    t.text     "article"
+    t.datetime "dob"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.date     "date_of_birth"

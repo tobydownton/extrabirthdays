@@ -6,6 +6,7 @@ gem 'jquery-ui-rails'
 gem 'date_validator'
 gem 'google-api-client'
 gem 'httparty'
+gem 'sidekiq'
 
 group :production, :development do
 	gem 'pg'

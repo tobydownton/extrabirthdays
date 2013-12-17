@@ -37,25 +37,6 @@ class PagesController < ApplicationController
     @next_days_bday = @age_calculator.next_days_bday
     @next_months_bday = @age_calculator.next_months_bday
 
-    query = [{'id' => nil, 'name' => nil, 'type' => "/celebrities/celebrity",
-    "/people/person/date_of_birth" => []}]
-    url = Addressable::URI.parse('https://www.googleapis.com/freebase/v1/mqlread')
-    url.query_values = {
-        'query' => query.to_json,
-        'key'=> API_KEY
-    }
-    response = HTTParty.get(url, :format => :json)
-
-    @celeb_info = {}
-
-    response['result'].each { |topic|
-      @celeb_name = topic['name']
-      @celeb_dob = topic['/people/person/date_of_birth']
-
-      @celeb_info[@celeb_name] = @celeb_dob
-    
-    } 
-
   end
 
 end

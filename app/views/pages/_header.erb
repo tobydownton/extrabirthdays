@@ -1,0 +1,35 @@
+<div class="row">
+  <br>
+  <div class="large-6 columns">
+  	<div class="panel">
+  	<h2><%= title %></h2><p>
+ 		</div>
+ 	</div>
+
+	<div class="large-3 columns">
+  	<br>
+  	<%= form_for :post, url: 'calculate_age' do |f| %>
+		  <p>
+		    <%= f.text_field :date_of_birth, class: 'datepicker' %>
+		  </p>
+  </div>
+
+  <div class="large-3 columns">
+  	<br>
+  	<%= f.submit "Get Extra Birthdays!", :class => 'button' %>
+  </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+  </div>
+  <div class="large-6 columns">
+  	<% if !flash.empty? %>
+  		<div data-alert class="alert-box">
+  			<%= flash[:notice] %>
+		  <a href="#" class="close">&times;</a>
+			</div>
+  	<% end %>
+  </div>
+</div>

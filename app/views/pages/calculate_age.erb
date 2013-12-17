@@ -1,38 +1,6 @@
-<div class="row">
-  <br>
-  <div class="large-6 columns">
-  	<div class="panel">
-  	<h2>Try Another Birthday:</h2>
- 		</div>
- 	</div>
-
-	<div class="large-3 columns">
-  	<br>
-  	<%= form_for :post, url: 'calculate_age' do |f| %>
-		  <p>
-		    <%= f.text_field :date_of_birth, class: 'datepicker' %>
-		  </p>
-  </div>
-
-  <div class="large-3 columns">
-  	<br>
-  	<%= f.submit "Get Extra Birthdays!", :class => 'button' %>
-  </div>
-  <% end %>
-</div>
-
-<div class="row">
-  <div class="large-6 columns">
-  </div>
-  <div class="large-6 columns">
-  	<% if !flash.empty? %>
-  		<div data-alert class="alert-box">
-  			<%= flash[:notice] %>
-		  <a href="#" class="close">&times;</a>
-			</div>
-  	<% end %>
-  </div>
-</div>
+<%= render :partial => "header", :locals => {
+    :title => "Try Another Birthday:" 
+} %>
 
 <% if flash[:notice] == nil %>
 
@@ -40,100 +8,56 @@
 <%# Top row shows dob and years/days old %>
 <br>
 <div class="row">
-  <div class="large-6 columns">
-  	<div class="panel">
-	  	<h2>Your were born on:</h2>
-		  	<div class="panel callout">
-				<%= @nice_dob %><br>
-				</div>
-			</div>
-  </div>
+	<%= render :partial => "panel", :locals => {
+		:title => "Your were born on:", 
+		:data => @nice_dob 
+	} %>
 
-  <div class="large-6 columns">
-  	<div class="panel">
-	  	<h2>You are:</h2>
-	  		<div class="panel callout">
-	  		
-	  		<%= @years_old %> years, and <%= @days_since_last_bday %> days old
-	  	
-	  		</div>
-	  </div>
-  </div>
+	<%= render :partial => "panel", :locals => {
+		:title => "You are:", 
+		:data => @years_old.to_s+" years, and "+@days_since_last_bday.to_s+" days old" 
+	} %>
 </div>
 
 <%# Second row shows days old and next extra days bday %>
 <div class="row">
- <div class="large-6 columns">
-  	<div class="panel">
-	  	<h2>Total Age in Days:</h2><br><br>
-		  	<div class="panel callout">
-		  		<%= number_with_delimiter(@days_old, :delimiter => ',') %>
-				</div>
-		</div>
-  </div>	
+	<%= render :partial => "panel", :locals => {
+		:title => "Total Age in Days:", 
+		:data => number_with_delimiter(@days_old, :delimiter => ',') 
+	} %>
 
-  <div class="large-6 columns">
-  	<div class="panel">
-	  	<h2>Your next extra birthday in days is:</h2>
-	  		<div class="panel callout">
-	  		<%= number_with_delimiter(@next_days_bday, :delimiter => ',') %>
-	  		which falls on the <%= @next_dob_in_days  %>
-	  		</div>
-	  </div>
-  </div>
+	<%= render :partial => "panel", :locals => {
+		:title => "Your next extra birthday in days is:", 
+		:data => number_with_delimiter(@next_days_bday, :delimiter => ',').to_s+"	which falls on the "+@next_dob_in_days.to_s
+	} %>
 </div>
 
 <%# Third row shows weeks old and next extra weeks bday %>
 <div class="row">
-  <div class="large-6 columns">
-  	<div class="panel">
-	  	<h2>Total Age in Weeks:</h2><br><br>
-	  		<div class="panel callout">
-	  		<%= number_with_delimiter(@weeks_old, :delimiter => ',') %> weeks old
-	  		</div>
-	  </div>
-  </div>
-  	
-  <div class="large-6 columns">
-  	<div class="panel">
-	  	<h2>Your next extra birthday in weeks is:</h2>
-		  	<div class="panel callout">
-		  		<%= number_with_delimiter(@next_weeks_bday, :delimiter => ',') %>
-		  		which falls on the <%= @next_dob_in_weeks  %>
-				</div>
-		</div>
-  </div>
+	<%= render :partial => "panel", :locals => {
+		:title => "Total Age in Weeks:", 
+		:data => number_with_delimiter(@weeks_old, :delimiter => ',') 
+	} %>
+
+	<%= render :partial => "panel", :locals => {
+		:title => "Your next extra birthday in weeks is:", 
+		:data => number_with_delimiter(@next_weeks_bday, :delimiter => ',').to_s+"	which falls on the "+@next_dob_in_weeks.to_s 
+	} %>
 </div>
 
 <%# Forth row shows months old and next extra months bday %>
 <div class="row">
-  <div class="large-6 columns">
-  	<div class="panel">
-	  	<h2>Total Age in Months:</h2><br><br>
-	  		<div class="panel callout">
-	  		<%= number_with_delimiter(@months_old, :delimiter => ',') %>
-	  		</div>
-	  </div>
-  </div>
-  	
-  <div class="large-6 columns">
-  	<div class="panel">
-	  	<h2>Your next extra birthday in months is:</h2>
-	  		<div class="panel callout">
-	  		<%= number_with_delimiter(@next_months_bday, :delimiter => ',') %>
-	  		which falls on the <%= @next_dob_in_months  %>
-	  		</div>
-	  </div>
-  </div>
+	<%= render :partial => "panel", :locals => {
+		:title => "Total Age in Months:", 
+		:data => number_with_delimiter(@months_old, :delimiter => ',') 
+	} %>
+ 
+ 	<%= render :partial => "panel", :locals => {
+		:title => "Your next extra birthday in months is:", 
+		:data => number_with_delimiter(@next_months_bday, :delimiter => ',').to_s+"	which falls on the "+@next_dob_in_months.to_s 
+	} %>
 </div>
 
-<ul>
-  <% @celeb_info.each do |item| %>
-    <% item.each do |key,value| %>
-        <li><%= "#{key.to_s} #{value.to_s}" %> </li>
-    <% end %>
-  <% end %>
-</ul>
 
 <%# Ends flash notice from line 37 %>
 <% end %>
