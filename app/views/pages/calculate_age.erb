@@ -28,7 +28,7 @@
 
 	<%= render :partial => "panel", :locals => {
 		:title => "Your next extra birthday in days is:", 
-		:data => number_with_delimiter(@next_days_bday, :delimiter => ',').to_s+"	which falls on the "+@next_dob_in_days.to_s
+		:data => "#{number_with_delimiter(@next_days_bday, :delimiter => ',')}  which falls on the #{@next_dob_in_days}"
 	} %>
 </div>
 
@@ -41,7 +41,7 @@
 
 	<%= render :partial => "panel", :locals => {
 		:title => "Your next extra birthday in weeks is:", 
-		:data => number_with_delimiter(@next_weeks_bday, :delimiter => ',').to_s+"	which falls on the "+@next_dob_in_weeks.to_s 
+		:data => "#{number_with_delimiter(@next_weeks_bday, :delimiter => ',')}	which falls on the #{@next_dob_in_weeks}"
 	} %>
 </div>
 
@@ -54,12 +54,11 @@
  
  	<%= render :partial => "panel", :locals => {
 		:title => "Your next extra birthday in months is:", 
-		:data => number_with_delimiter(@next_months_bday, :delimiter => ',').to_s+"	which falls on the "+@next_dob_in_months.to_s 
+		:data => "#{number_with_delimiter(@next_months_bday, :delimiter => ',')}	which falls on the #{@next_dob_in_months}"
 	} %>
 </div>
 
-
-<%# Ends flash notice from line 37 %>
+<%# Ends flash notice %>
 <% end %>
 
 <br><br><br><br><br><br><br><br>
